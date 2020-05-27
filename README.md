@@ -6,4 +6,4 @@ Endpoint | Method | Requirements
 /api/auth/login | POST | username & password
 /api/auth/users | GET | N/A
 /api/posts | GET | Valid token in Auth header
-/api/posts | POST | title & description
+/api/posts | POST | title & description *required*, materials/instructions/video *optional*
