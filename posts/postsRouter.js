@@ -6,7 +6,7 @@ const Posts = require("../auth/helpers")
 
 const validateToken = require('../auth/authenticate-middleware')
 
-router.get('/', validateToken, (req, res) => {
+router.get('/', (req, res) => {
   const requestOptions = {
     headers: { accept: 'application/json' },
   };
