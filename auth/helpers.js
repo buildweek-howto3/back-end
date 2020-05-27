@@ -9,6 +9,7 @@ module.exports = {
   getStepsById,
 //   findByPostId,
 //   updatePost
+getPosts,
 };
 
 function find() {
@@ -52,3 +53,7 @@ function getById(id) {
 //             return findByPostId(id)
 //         })
 // }
+
+function getPosts() {
+    return db("posts")
+}

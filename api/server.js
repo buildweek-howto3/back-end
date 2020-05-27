@@ -3,7 +3,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const session = require("express-session");
 
-// const postsRouter = require("../posts/posts-router.js");
+const postsRouter = require("../posts/postsRouter.js");
 const authRouter = require("../auth/authRouter");
 
 const server = express();
@@ -27,7 +27,7 @@ server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
-// server.use("/api/posts", postsRouter);
+server.use("/api/posts", postsRouter);
 server.use("/api/auth", authRouter);
 
 server.get("/", (req, res) => {
