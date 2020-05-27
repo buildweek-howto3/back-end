@@ -4,6 +4,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs")
 
 const Users = require("./helpers")
+const validateToken = require('../auth/authenticate-middleware')
 
 router.post("/register", (req, res) => {
     const credentials = req.body;
@@ -51,15 +52,19 @@ router.post('/login', (req,res) => {
     }
   })
 
-  router.get('/users', (req, res) => {
-      Users.find()
-        .then(users => {
-            res.status(200).json({users})
-        })
-        .catch(err => {
-            res.status(400).json({message: err.message})
-        })
-  })
+  router.get('/users', validateToken, (req, res) => {
+    user = res.req.username
+
+    Users.find()
+      .then(users => {
+          res.status(200).json({users, currentUser: user})
+          console.log(res.req.username.sub)
+      })
+      .catch(err => {
+          res.status(400).json({message: err.message})
+      })
+})
+
 
   function generateToken(user) {
     const payload = {
