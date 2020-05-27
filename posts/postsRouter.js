@@ -62,7 +62,8 @@ router.post('/:id/steps', validateToken, (req, res) => {
   Posts.getPostById(id, requestOptions)
   .then(post => {
     if(post) {
-      Posts.addStep(stepData, id)
+      stepData.posts_id = id
+      Posts.addStep(stepData)
       .then(step => {
         res.status(201).json(step)
       })
@@ -105,6 +106,22 @@ router.get('/:id', validateToken, (req,res) => {
       res.status(500).json({message: err.message})
     })
 })
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  Posts.remove(id)
+  .then(deleted => {
+    if (deleted) {
+      res.json({ removed: deleted });
+    } else {
+      res.status(404).json({ message: 'Could not find post with given id' });
+    }
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Failed to delete post' });
+  });
+});
 
 
 

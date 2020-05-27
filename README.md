@@ -10,7 +10,7 @@ Endpoint | Method | Requirements
 /api/posts/user/:id | GET | Valid token in Authorization header - returns a user's posts based on userId
 /api/posts/:id | GET | Valid token in authorization header - returns a specific post based on postId
 /api/posts/:id/steps | GET | Valid token in authorization header
-/api/posts/:id/steps | POST | stepName, stepNumber, posts_id ALL REQUIRED
+/api/posts/:id/steps | POST | stepName, stepNumber - ***stepNumber is a string***
 ------------ | ------------- | ------------- 
 
 

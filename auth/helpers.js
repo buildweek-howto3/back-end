@@ -12,7 +12,8 @@ module.exports = {
 getPosts,
 add,
 addStep,
-getPostById
+getPostById,
+remove
 };
 
 function find() {
@@ -76,4 +77,9 @@ function getPostById(id) {
   return db("posts as p")
   .where({id})
   .first()
+}
+
+function remove(id) {
+  return db("posts")
+      .where({ id }).del();
 }
