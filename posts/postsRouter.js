@@ -33,6 +33,25 @@ router.post('/', validateToken, (req, res) => {
   });
 });
 
+router.get('/user/:id', validateToken, (req, res) => {
+  const {id} = req.params;
+
+  Posts.getUserPosts(id)
+    .then(posts => {
+      res.status(200).json(posts);
+    })
+    .catch(err => {
+      res.status(500).json({message: err.message})
+    })
+})
+
+// function getUserPosts(userId) {
+//   return db('posts as p')
+//     .join('users as u', 'u.id', 'p.user_id')
+//     .select('p.id',"p.title", 'p.description', 'p.materials','p.video', 'u.username as postedBy')
+//     .where('p.user_id', userId);
+// }
+
 
 
 module.exports = router;

@@ -33,15 +33,15 @@ function getById(id) {
   }
 
   function getUserPosts(userId) {
-    return db('posts as p')
-      .join('users as u', 'u.id', 'p.user_id')
-      .select('p.id',"p.title", 'p.description', 'p.materials','p.video', 'u.username as postedBy')
-      .where('p.user_id', userId);
+    return db("posts as p")
+    .join('users as u', 'u.id', 'p.user_id')
+    .select('p.id as postId',"p.title", 'p.description', "u.username as postedBy")
+    .where("p.user_id", userId)
   }
 
   function getStepsById(postId) {
       return db('steps as s')
-        .join('posts as p', 'p.id', 's.post_id')
+        .join('posts as p', postId)
         .select('s.id', 's.stepName', "s.stepNumber", "p.title")
         .where('s.post_id', postId)
         .orderBy("s.stepNumber")
