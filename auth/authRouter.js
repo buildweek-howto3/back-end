@@ -53,11 +53,12 @@ router.post('/login', (req,res) => {
   })
 
   router.get('/users', validateToken, (req, res) => {
-    const user = res.req.username
+    const username = res.req.username.username
+    const user_id = res.req.username.sub
 
     Users.find()
       .then(users => {
-          res.status(200).json({users, currentUser: user})
+          res.status(200).json({currentUser: {username, user_id}, users})
           console.log(res.req.username.sub)
       })
       .catch(err => {
