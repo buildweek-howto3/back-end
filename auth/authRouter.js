@@ -53,7 +53,7 @@ router.post('/login', (req,res) => {
   })
 
   router.get('/users', validateToken, (req, res) => {
-    user = res.req.username
+    const user = res.req.username
 
     Users.find()
       .then(users => {
