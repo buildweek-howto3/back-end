@@ -55,5 +55,7 @@ function getById(id) {
 // }
 
 function getPosts() {
-    return db("posts")
+    return db("posts as p")
+    .join('users as u', 'u.id', 'p.user_id')
+    .select('p.id',"p.title", 'p.description', 'p.materials','p.video', 'p.instructions', 'u.username as postedBy')
 }
