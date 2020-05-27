@@ -51,6 +51,16 @@ router.post('/login', (req,res) => {
     }
   })
 
+  router.get('/users', (req, res) => {
+      Users.find()
+        .then(users => {
+            res.status(200).json({users})
+        })
+        .catch(err => {
+            res.status(400).json({message: err.message})
+        })
+  })
+
   function generateToken(user) {
     const payload = {
         sub: user.id,

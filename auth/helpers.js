@@ -13,7 +13,8 @@ getPosts,
 };
 
 function find() {
-  return db("users");
+  return db("users")
+  .select('users.id','users.username')
 }
 
 function insert(user) {
