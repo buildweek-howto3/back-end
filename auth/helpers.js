@@ -10,7 +10,9 @@ module.exports = {
 //   findByPostId,
 //   updatePost
 getPosts,
-add
+add,
+addStep,
+getPostById
 };
 
 function find() {
@@ -41,9 +43,9 @@ function getById(id) {
 
   function getStepsById(postId) {
       return db('steps as s')
-        .join('posts as p', postId)
-        .select('s.id', 's.stepName', "s.stepNumber", "p.title")
-        .where('s.post_id', postId)
+        .join('posts as p', 'p.id', 's.posts_id')
+        .select('s.id as stepId', "p.title", 's.stepName', "s.stepNumber")
+        .where('s.posts_id', postId)
         .orderBy("s.stepNumber")
   }
 
@@ -64,4 +66,14 @@ function getPosts() {
 
 function add(post) {
   return db("posts").insert(post);
+}
+
+function addStep(step) {
+  return db("steps").insert(step)
+}
+
+function getPostById(id) {
+  return db("posts as p")
+  .where({id})
+  .first()
 }

@@ -7,6 +7,11 @@ Endpoint | Method | Requirements
 /api/auth/users | GET | Valid token in Authorization header
 /api/posts | GET | Valid token in Authorization header
 /api/posts | POST | title & description *required* --- materials/instructions/video *optional*
+/api/posts/user/:id | GET | Valid token in Authorization header - returns a user's posts based on userId
+/api/posts/:id | GET | Valid token in authorization header - returns a specific post based on postId
+
+/api/posts/:id/steps | GET | Valid token in authorization header
+/api/posts/:id/steps | POST | stepName, stepNumber, posts_id ALL REQUIRED
 ------------ | ------------- | ------------- 
 
         posts.string("title", 128).notNullable().unique().index();
