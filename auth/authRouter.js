@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs")
 
 const Users = require("./helpers")
 const validateToken = require('../auth/authenticate-middleware')
+const decodedToken = require('../auth/authenticate-middleware')
 
 router.post("/register", (req, res) => {
     const credentials = req.body;
@@ -59,7 +60,6 @@ router.post('/login', (req,res) => {
     Users.find()
       .then(users => {
           res.status(200).json({currentUser: {username, user_id}, users})
-          console.log(res.req.username.sub)
       })
       .catch(err => {
           res.status(400).json({message: err.message})
