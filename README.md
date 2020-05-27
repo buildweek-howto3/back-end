@@ -1,4 +1,4 @@
-#end-points
+# endpoints
 
 Endpoint | Method | Requirements
 ------------ | ------------- | ------------- 
@@ -13,14 +13,8 @@ Endpoint | Method | Requirements
 /api/posts/:id/steps | POST | stepName, stepNumber, posts_id ALL REQUIRED
 ------------ | ------------- | ------------- 
 
-        posts.string("title", 128).notNullable().unique().index();
-        posts.string("description", 256).notNullable();
-        posts.string("materials", 256);
-        posts.string("video");
-        posts.string("instructions");
 
-
-# /api/posts Schema
+# /api/posts schema
 
 name | type | required
 ---- | ---- | --------
@@ -29,4 +23,13 @@ description|string|yes
 materials|string|no
 video|string/url|no
 instruction|string|no
+
+# /api/posts/:id/steps schema
+
+name | type | required
+---- | ---- | --------
+posts_id|integer (should be pulled from whatever post they're trying to add a step to)|yes
+stepName|string|yes
+stepNumber|***string***|yes
+
 
