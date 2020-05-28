@@ -123,15 +123,6 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-
-
-// function getUserPosts(userId) {
-//   return db('posts as p')
-//     .join('users as u', 'u.id', 'p.user_id')
-//     .select('p.id',"p.title", 'p.description', 'p.materials','p.video', 'u.username as postedBy')
-//     .where('p.user_id', userId);
-// }
-
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const changes = req.body;

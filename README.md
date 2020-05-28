@@ -30,8 +30,8 @@ instruction|string|no
 
 name | type | required
 ---- | ---- | --------
-posts_id|integer (should be pulled from whatever post they're trying to add a step to)|yes
-stepName|string|yes
-stepNumber|***string***|yes
+posts_id|integer (should be pulled from whatever post they're trying to add a step to)| auto
+stepName|string| no
+stepNumber|***string***| no
 
 
