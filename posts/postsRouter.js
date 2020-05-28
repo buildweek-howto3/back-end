@@ -21,14 +21,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', validateToken, (req, res) => {
-
-  const requestOptions = {
-    headers: { accept: 'application/json' },
-  };
   const postData = req.body;
   postData.user_id = res.req.username.sub
 
-  Posts.add(postData, requestOptions)
+  Posts.add(postData)
   .then(post => {
     res.status(201).json(post);
   })

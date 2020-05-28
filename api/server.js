@@ -10,7 +10,7 @@ const server = express();
 
 const sessionConfig = {
   cookie: {
-    maxAge: 1000 * 60 * 60, 
+    maxAge: 1000 * 60 * 60 * 24 * 7, 
     secure: process.env.SECURE_COOKIE || false,
     httpOnly: true, 
   },
