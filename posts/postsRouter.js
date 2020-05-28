@@ -109,7 +109,7 @@ router.delete('/:id', (req, res) => {
   Posts.remove(id)
   .then(deleted => {
     if (deleted) {
-      res.json({ removed: deleted });
+      res.status(200).json({ removed: deleted });
     } else {
       res.status(404).json({ message: 'Could not find post with given id' });
     }

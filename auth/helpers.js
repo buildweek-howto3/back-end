@@ -7,14 +7,12 @@ module.exports = {
   getById,
   getUserPosts,
   getStepsById,
-//   findByPostId,
-//   updatePost
-getPosts,
-add,
-addStep,
-getPostById,
-remove,
-update
+  getPosts,
+  add,
+  addStep,
+  getPostById,
+  remove,
+  update
 };
 
 function find() {
@@ -39,7 +37,7 @@ function getById(id) {
   function getUserPosts(userId) {
     return db("posts as p")
     .join('users as u', 'u.id', 'p.user_id')
-    .select('p.id as postId',"p.title", 'p.description', "u.username as postedBy")
+    .select('p.id as postId',"p.title", 'p.description', "p.materials", "p.instructions", "p.video", "u.username as postedBy")
     .where("p.user_id", userId)
   }
 
