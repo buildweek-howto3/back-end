@@ -92,7 +92,7 @@ router.get('/:id/steps', validateToken, (req, res) => {
 
 })
 
-router.get('/:id', validateToken, (req,res) => {
+router.get('/:id', (req,res) => {
   const requestOptions = {
     headers: { accept: 'application/json' },
   };
@@ -131,6 +131,26 @@ router.delete('/:id', (req, res) => {
 //     .select('p.id',"p.title", 'p.description', 'p.materials','p.video', 'u.username as postedBy')
 //     .where('p.user_id', userId);
 // }
+
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  Posts.getPostById(id)
+  .then(post => {
+    if (post) {
+      Schemes.update(changes, id)
+      .then(updatedPost => {
+        res.json(updatedPost);
+      });
+    } else {
+      res.status(404).json({ message: 'Could not find post with given id' });
+    }
+  })
+  .catch (err => {
+    res.status(500).json({ message: 'Failed to update post' });
+  });
+});
 
 
 

@@ -10,6 +10,7 @@ Endpoint | Method | Requirements
 /api/posts/user/:id | GET | Valid token in Authorization header - returns a user's posts based on userId
 /api/posts/:id | GET | Valid token in authorization header - returns a specific post based on postId
 /api/posts/:id | DELETE | Deletes a post based on postID
+/api/posts/:id | PUT | Change title/description/materials/instructions/video
 /api/posts/:id/steps | GET | Valid token in authorization header
 /api/posts/:id/steps | POST | stepName, stepNumber - ***stepNumber is a string***
 ------------ | ------------- | ------------- 

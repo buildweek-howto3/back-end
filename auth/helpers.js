@@ -83,3 +83,12 @@ function remove(id) {
   return db("posts")
       .where({ id }).del();
 }
+
+function update (changes, id) {
+  return db("posts")
+      .where({ id })
+      .update(changes)
+      .then(() => {
+          return getPostById(id)
+      })
+}
