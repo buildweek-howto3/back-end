@@ -13,7 +13,8 @@ getPosts,
 add,
 addStep,
 getPostById,
-remove
+remove,
+update
 };
 
 function find() {

@@ -139,7 +139,7 @@ router.put('/:id', (req, res) => {
   Posts.getPostById(id)
   .then(post => {
     if (post) {
-      Schemes.update(changes, id)
+      Posts.update(changes, id)
       .then(updatedPost => {
         res.json(updatedPost);
       });
