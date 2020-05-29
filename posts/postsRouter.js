@@ -24,9 +24,16 @@ router.post('/', validateToken, (req, res) => {
   const postData = req.body;
   postData.user_id = res.req.username.sub
 
+
+
   Posts.add(postData)
-  .then(post => {
-    res.status(201).json(post);
+  .then(post => { 
+    if (post){
+      Posts.getUserPosts(postData.user_id)
+        .then(post => {
+          res.status(201).json(post)
+        })
+    }
   })
   .catch (err => {
     res.status(500).json({ message: 'Failed to create new post' });
