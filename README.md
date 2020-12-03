@@ -13,7 +13,7 @@ Endpoint | Method | Requirements
 /api/posts/:id | PUT | Change title/description/materials/instructions/video
 /api/posts/:id/steps | GET | Valid token in authorization header
 /api/posts/:id/steps | POST | stepName, stepNumber - ***stepNumber is a string***
------------- | ------------- | ------------- 
+
 
 
 # /api/posts schema
